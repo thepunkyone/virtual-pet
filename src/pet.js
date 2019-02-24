@@ -13,6 +13,25 @@ function Pet(name) {
   this.fitness = maximumFitness;
 }
 
+Pet.prototype = {
+  get isAlive() {
+    return this.fitness > insufficientFitness && this.hunger < starvationLevel
+    && this.age < maximumLifespan;
+  },
+};
+
+//Alternate version, based on MDN get examples https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
+
+// Object.defineProperties(Pet.prototype, {
+//   isAlive: {
+//     get: function () {
+//       return this.fitness > insufficientFitness && this.hunger < starvationLevel
+//       && this.age < maximumLifespan;
+//     },
+//   },
+// });
+
+
 Pet.prototype.growUp = function () {
   const hungerIncrement = 5;
   const fitnessDecrement = 3;
@@ -56,16 +75,5 @@ Pet.prototype.checkUp = function () {
   }
   return 'I feel great!';
 };
-
-Object.defineProperties(Pet.prototype, {
-  isAlive: {
-    get: function () {
-      if (this.fitness <= insufficientFitness || this.hunger >= starvationLevel || this.age >= maximumLifespan) {
-        return false;
-      }
-      return true;
-    },
-  },
-});
 
 module.exports = Pet;
