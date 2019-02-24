@@ -86,4 +86,25 @@ describe('Pet constructor', () => {
     pet.age = 30;
     expect(pet.isAlive).toBe(false);
   });
+
+  it('calling growUp, walk or feed methods throws an error if pet\'s fitness is insufficient', () => {
+    pet.fitness = 0;
+    expect(() => pet.growUp()).toThrowError('Your pet is no longer alive :(');
+    expect(() => pet.walk()).toThrowError('Your pet is no longer alive :(');
+    expect(() => pet.feed()).toThrowError('Your pet is no longer alive :(');
+  });
+
+  it('calling growUp, walk or feed methods throws an error if pet\'s hunger reaches starvation level', () => {
+    pet.hunger = 10;
+    expect(() => pet.growUp()).toThrowError('Your pet is no longer alive :(');
+    expect(() => pet.walk()).toThrowError('Your pet is no longer alive :(');
+    expect(() => pet.feed()).toThrowError('Your pet is no longer alive :(');
+  });
+
+  it('calling growUp, walk or feed methods throws an error if pet\'s age reaches maximum lifespan', () => {
+    pet.age = 30;
+    expect(pet.growUp).toThrowError('Your pet is no longer alive :(');
+    expect(pet.walk).toThrowError('Your pet is no longer alive :(');
+    expect(pet.feed).toThrowError('Your pet is no longer alive :(');
+  });
 });
