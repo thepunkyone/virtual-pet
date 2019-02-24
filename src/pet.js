@@ -19,9 +19,8 @@ Pet.prototype.growUp = function() {
 }
 
 Pet.prototype.walk = function() {
-    const currentFitness = this.fitness;
     const fitnessImprovement = 4;
-    if (maximumFitness - currentFitness > fitnessImprovement) {
+    if (maximumFitness - this.fitness > fitnessImprovement) {
         this.fitness += fitnessImprovement;
     }
     else {
@@ -30,13 +29,29 @@ Pet.prototype.walk = function() {
 }
 
 Pet.prototype.feed = function() {
-    const currentHunger = this.hunger;
     const hungerImprovement = 3;
-    if (currentHunger - hungerImprovement >= 0) {
+    if (this.hunger - hungerImprovement >= 0) {
         this.hunger -= hungerImprovement;
     }
     else {
         this.hunger = initialHunger;
+    }
+}
+
+Pet.prototype.checkUp = function() {
+    const needsFeeding = 5;
+    const needsWalking = 3;
+    if (this.hunger >= needsFeeding && this.fitness <= needsWalking) {
+        return 'I am hungry AND I need a walk';
+    }
+    else if (this.hunger >= needsFeeding) {
+        return 'I am hungry';
+    }
+    else if (this.fitness <= needsWalking) {
+        return 'I need a walk';
+    }
+    else {
+        return 'I feel great!';
     }
 }
 

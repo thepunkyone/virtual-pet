@@ -1,8 +1,11 @@
 const Pet = require('../src/pet');
 
 describe('Pet constructor', () => {
-    const pet = new Pet('Fido');
-
+    let pet;
+    beforeEach(() => {
+        pet = new Pet('Fido');
+    });
+    
     it('returns an object', () => {
       expect(pet).toBeInstanceOf(Object);
     });
@@ -15,7 +18,7 @@ describe('Pet constructor', () => {
     it('has an initial hunger level of 0', () => {
         expect(pet.hunger).toBe(0);
     });
-    it('has an initial fitness level of 10', () => {
+    it('has an initial fitness level of maximum fitness', () => {
         expect(pet.fitness).toBe(10);
     });
     it ('growUp method adds one year to pet\'s age, five points to hunger and removes three points from fitness', () => {
@@ -29,7 +32,7 @@ describe('Pet constructor', () => {
         expect(pet.hunger).toBe(10);
         expect(pet.fitness).toBe(4);
     });
-    it ('walk method adds four points to pet\'s fitness until a maximum of 10 points is achieved', () => {
+    it ('walk method adds four points to pet\'s fitness until maximum fitness is achieved', () => {
         pet.fitness = 5;
 
         pet.walk();
@@ -46,5 +49,21 @@ describe('Pet constructor', () => {
 
         pet.feed();
         expect(pet.hunger).toBe(0);
+    });
+    it ('checkUp method returns I am hungry if hunger is above optimum levels', () => {
+        pet.hunger = 5;
+        expect(pet.checkUp()).toBe('I am hungry');
+    });
+    it ('checkUp method returns I need a walk if fitness is below optimum levels', () => {
+        pet.fitness = 3;
+        expect(pet.checkUp()).toBe('I need a walk');
+    });
+    it ('checkUp method returns I am hungry AND I need a walk if hunger is above and fitness is below optimum levels', () => {
+        pet.hunger = 5;
+        pet.fitness = 3;
+        expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+    });
+    it ('checkUp method returns I feel great! if hunger and fitness is at optimum levels', () => {
+        expect(pet.checkUp()).toBe('I feel great!');
     });
 });
