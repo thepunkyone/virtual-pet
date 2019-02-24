@@ -1,7 +1,10 @@
 /* eslint-disable func-names */
 const initialAge = 0;
+const maximumLifespan = 30;
 const initialHunger = 0;
+const starvationLevel = 10;
 const maximumFitness = 10;
+const insufficientFitness = 0;
 
 function Pet(name) {
   this.name = name;
@@ -45,15 +48,24 @@ Pet.prototype.checkUp = function () {
   if (this.hunger >= needsFeeding && this.fitness <= needsWalking) {
     return 'I am hungry AND I need a walk';
   }
-  else if (this.hunger >= needsFeeding) {
+  if (this.hunger >= needsFeeding) {
     return 'I am hungry';
   }
-  else if (this.fitness <= needsWalking) {
+  if (this.fitness <= needsWalking) {
     return 'I need a walk';
   }
-  else {
-    return 'I feel great!';
-  }
+  return 'I feel great!';
 };
+
+Object.defineProperties(Pet.prototype, {
+  isAlive: {
+    get: function () {
+      if (this.fitness <= insufficientFitness || this.hunger >= starvationLevel || this.age >= maximumLifespan) {
+        return false;
+      }
+      return true;
+    },
+  },
+});
 
 module.exports = Pet;
