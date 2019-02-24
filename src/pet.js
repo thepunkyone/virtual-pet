@@ -1,12 +1,12 @@
 const initialAge = 0;
 const initialHunger = 0;
-const initialFitness = 10;
+const maximumFitness = 10;
 
 function Pet(name) {
     this.name = name;
     this.age = initialAge;
     this.hunger = initialHunger;
-    this.fitness = initialFitness;
+    this.fitness = maximumFitness;
 };
 
 Pet.prototype.growUp = function() {
@@ -19,7 +19,6 @@ Pet.prototype.growUp = function() {
 }
 
 Pet.prototype.walk = function() {
-    const maximumFitness = 10;
     const currentFitness = this.fitness;
     const fitnessImprovement = 4;
     if (maximumFitness - currentFitness > fitnessImprovement) {
