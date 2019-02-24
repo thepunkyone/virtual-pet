@@ -1,7 +1,7 @@
 const Pet = require('../src/pet');
 
 describe('Pet constructor', () => {
-    pet = new Pet('Fido');
+    const pet = new Pet('Fido');
 
     it('returns an object', () => {
       expect(pet).toBeInstanceOf(Object);
@@ -37,5 +37,14 @@ describe('Pet constructor', () => {
 
         pet.walk();
         expect(pet.fitness).toBe(10);
+    });
+    it ('feed method decreases pet\'s hunger by three points until a minimum of 0 is achieved', () => {
+        pet.hunger = 5;
+
+        pet.feed();
+        expect(pet.hunger).toBe(2);
+
+        pet.feed();
+        expect(pet.hunger).toBe(0);
     });
 });

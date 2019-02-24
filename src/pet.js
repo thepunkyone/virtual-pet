@@ -29,4 +29,15 @@ Pet.prototype.walk = function() {
     }
 }
 
+Pet.prototype.feed = function() {
+    const currentHunger = this.hunger;
+    const hungerImprovement = 3;
+    if (currentHunger - hungerImprovement >= 0) {
+        this.hunger -= hungerImprovement;
+    }
+    else {
+        this.hunger = initialHunger;
+    }
+}
+
 module.exports = Pet;
