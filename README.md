@@ -1,5 +1,5 @@
 
-#### Virtual Pet
+# Virtual Pet
 
 A JavaScript object-oriented programming exercise based on [Manchester Codes](https://github.com/MCRcodes) tutorial.
 
