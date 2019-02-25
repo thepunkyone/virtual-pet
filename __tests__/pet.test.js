@@ -107,4 +107,17 @@ describe('Pet constructor', () => {
     expect(pet.walk).toThrowError('Your pet is no longer alive :(');
     expect(pet.feed).toThrowError('Your pet is no longer alive :(');
   });
+
+  it('adoptChild method ads the child object to Pet instance\'s children array', () => {
+    const parent = new Pet('Dave');
+    const child = new Pet('Amelia');
+    parent.adoptChild(child);
+    expect(parent.children).toEqual([{name: 'Amelia', age: 0, hunger: 0, fitness: 10, children: []}]);
+  });
+
+  it('haveBaby method ads the child object to Pet instance\'s children array', () => {
+    const parent = new Pet('Dave');
+    parent.haveBaby('Billy');
+    expect(parent.children).toEqual([{name: 'Billy', age: 0, hunger: 0, fitness: 10, children: []}]);
+  });
 });
