@@ -23,7 +23,7 @@ Run tests using `npm test --`
 
 ## Built With
 
-* [Node.js](https://nodejs.org/en/download/)
+* [Node.js](https://nodejs.org/en/download/) 8.10.0
 * [Jest](https://github.com/facebook/jest) 24.1.0
 * [ESLint](https://github.com/eslint/eslint) [Manchester Codes](https://github.com/MCRcodes/eslint-config) config 1.3.0
 
