@@ -1,3 +1,12 @@
+// Very good effort here. Can tell you took the time to understand this while writing it
+// I would suggest redoing this assignment if you get time this weekend but making your own
+// pet with different functions.
+// give it a go and see how much you can do.
+
+// Try to make meaningful commits with your code when working on one project.
+// senior devs will check commit history on technical tests
+// be sure to commit when you've completed a new function or step on the walkthrough
+
 /* eslint-disable func-names */
 const initialAge = 0;
 const maximumLifespan = 30;
@@ -16,12 +25,12 @@ function Pet(name) {
 
 Pet.prototype = {
   get isAlive() {
-    return this.fitness > insufficientFitness && this.hunger < starvationLevel
-    && this.age < maximumLifespan;
+    return this.fitness > insufficientFitness && this.hunger < starvationLevel &&
+      this.age < maximumLifespan;
   },
 };
 
-//Alternate version, based on MDN get examples https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
+// Alternate version, based on MDN get examples https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
 
 // Object.defineProperties(Pet.prototype, {
 //   isAlive: {

@@ -4,7 +4,8 @@
   "description": "Virtual Pet by Vitnija Bluzma https://github.com/thepunkyone",
   "main": "/src/pet.js",
   "scripts": {
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "npx": "jest --coverage"
   },
   "repository": {
     "type": "git",
