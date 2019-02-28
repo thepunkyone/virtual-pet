@@ -1,3 +1,12 @@
+// Did some formatting of the tests here, so they look as intended but are also easier to read.
+// As mentioned in class, the test coverage here is very good but it's probably overkill
+// and over tested in certain areas.
+// Jest has the ability to test your coverage. I've added that option to your package.json
+// if you run the command "npx jest --coverage" it will run your tests and give you an overview
+// of what % your code is covered
+// Overall this is very good but you might want to consider testing rogue data a user may enter
+// such as 0's and minus numbers
+
 const Pet = require('../src/pet');
 
 describe('Pet constructor', () => {
@@ -20,8 +29,8 @@ describe('Pet constructor', () => {
   });
   it('has an initial fitness level of maximum fitness', () => {
     expect(pet.fitness).toBe(10);
-
   });
+
   it('growUp method adds one year to pet\'s age, five points to hunger and removes three points from fitness', () => {
     pet.growUp();
     expect(pet.age).toBe(1);
@@ -112,12 +121,25 @@ describe('Pet constructor', () => {
     const parent = new Pet('Dave');
     const child = new Pet('Amelia');
     parent.adoptChild(child);
-    expect(parent.children).toEqual([{name: 'Amelia', age: 0, hunger: 0, fitness: 10, children: []}]);
+
+    expect(parent.children).toEqual([{
+      name: 'Amelia',
+      age: 0,
+      hunger: 0,
+      fitness: 10,
+      children: [],
+    }]);
   });
 
   it('haveBaby method ads the child object to Pet instance\'s children array', () => {
     const parent = new Pet('Dave');
     parent.haveBaby('Billy');
-    expect(parent.children).toEqual([{name: 'Billy', age: 0, hunger: 0, fitness: 10, children: []}]);
+    expect(parent.children).toEqual([{
+      name: 'Billy',
+      age: 0,
+      hunger: 0,
+      fitness: 10,
+      children: [],
+    }]);
   });
 });
